@@ -1,0 +1,1 @@
+# 1. Take definitions.json, read it in as our data and use a spaced repetition algorithm to create a long list where each word is encountered less and less often, thus increasing the spacing between encounters as we strengthen our knowledge of the word.
