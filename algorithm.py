@@ -14,3 +14,11 @@ def load_vocab_from_json(file_path):
         for word, definition in data.items():
             result[word] = VocabCard(word, definition)
         return result
+
+def write_list_to_csv(words_list, output_file):
+    #Writes a list of words to a newly created 'output_file' (csv file) with each word wrapped in double quotes. newline='' avoids extra blank lines being inserted. utf-8 ensures compatibility across different environments
+    with open(output_file, mode="w", newline='', encoding='utf-8') as file:
+        # Here we create a CSV writer empty object/csv file to write data to. QUOTE_ALL wraps each word in double quotes
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+        for word in words_list:
+            writer.writerow([word])
