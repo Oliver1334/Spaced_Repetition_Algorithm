@@ -22,3 +22,18 @@ def write_list_to_csv(words_list, output_file):
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for word in words_list:
             writer.writerow([word])
+
+# 1.2 Create a VocabCard class that when initialized with arguments can create a complex object that keeps track of multiple properties or attributes of the current word.
+# 1.2.1 We're going to need to define a bunch of methods (class specific functions). We can use these methods to automatically handle a word encounter.
+# 1.3 Instantiate this class object for every word.
+class VocabCard:
+    # Represents a single vocab card
+    def __init__(self, word, definition, repetitions = 0, interval = 1, ease_factor = 2.5, review_counter = 0, is_new =True):
+        # This method takes arguments to define the following properties of this class when instantiated; creating a vocab card.
+        self.word = word
+        self.definition = definition
+        self.repetitions = repetitions
+        self.interval = interval
+        self.ease_factor = ease_factor
+        self.review_counter = review_counter # When this reaches 0, the word is due for review
+        self.is_new = is_new
