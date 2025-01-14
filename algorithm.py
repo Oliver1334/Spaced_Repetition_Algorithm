@@ -72,6 +72,53 @@ def show_word_status(vocab_cards):
         # One by one, check the vocab card class assigned to each word and see if it's due for review, if so add it to our array/list of due words
         if card.review_counter <= 0 and card.is_new == False:
             due_words.append(card)
-            
+
     print(f"Total words due for review: {len(due_words)}")
     return due_words
+
+def review_session(vocab_cards, max_repetitions = 5):
+    #Reviews words until all are ordered / mastered
+    history = [] # Tracks the order of words reviewed or introduced
+    total_words_reviewed = 0
+
+    #Write spaced repetition algorithm
+    while True:
+        # Reduce review counter for all words
+        for card in vocab_cards.values():
+            if card.review_counter > 0:
+                card.review_counter -= 1
+
+        # Get words due for review
+        due_words = show_word_status(vocab_cards)
+
+        # If no due words, introduce a new word as a filler
+        if not due_words:
+            filler_word = None
+            for card in vocab_cards.values():
+                if card.is_new:
+                    filler_word = card
+                    break
+                if filler_word:
+                    filler_word.is_new = False # Mark as no longer new
+                    print(f'Introducing a new word: {filler_word.word}')
+                    history.append(filler_word.word)
+                    total_words_reviewed += 1
+                    continue
+                else:
+                    all_learned = True
+                    for card in vocab_cards.values():
+                        if not card.is_learned(max_repetitions):
+                            all_learned = False
+                            break
+                        if all_learned:
+                            print('Congrats! All words are learned!')
+                            break
+
+        # Review the due words
+        for card in due_words:
+            print(f'Reviewing: {card.word}')
+            history.append(card.word) # Track the word in history
+            card.update_card()
+            total_words_reviewed += 1
+
+    
