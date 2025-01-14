@@ -62,3 +62,16 @@ class VocabCard:
     def is_learned(self, max_repetitions = 5):
         # Tells us if the current word is learned completely; the number of repetitions exceeds the stated max repetitions requirement.
         return self.repetitions >= max_repetitions
+
+# 1.4 Create the spaced repetition algorithm to generate a list of words with progressively increasing intervals between each occurrence of them. The algorithm will introduce new words and test old words at the appropriate intervals.
+def show_word_status(vocab_cards):
+    # Displays the current status of the words and also returns the due words in a list.
+    # Series of print statements with statistics from vocab card to illustrate where the user is in the algorithm.
+    due_words = []
+    for card in vocab_cards.values():
+        # One by one, check the vocab card class assigned to each word and see if it's due for review, if so add it to our array/list of due words
+        if card.review_counter <= 0 and card.is_new == False:
+            due_words.append(card)
+            
+    print(f"Total words due for review: {len(due_words)}")
+    return due_words
