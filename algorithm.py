@@ -37,3 +37,24 @@ class VocabCard:
         self.ease_factor = ease_factor
         self.review_counter = review_counter # When this reaches 0, the word is due for review
         self.is_new = is_new
+
+    def update_card(self):
+        # This method is responsible for handling an encounter with the current word and updating the word object's attributes each time it is encountered.
+        # First encounter
+        if self.repetitions == 0:
+            self.interval = 2
+        # Second encounter
+        elif self.repetitions == 1:
+            self.interval = 4
+        # Encounters beyond the second
+        else:
+            self.interval = round(self.interval * self.ease_factor)
+        
+        self.repetitions += 1
+        self.is_new = False
+        
+        # Although ease_factor starts at 2.5, we have this max function here for future tuning development
+        self.ease_factor = max(1.3, self.ease_factor + 0.1) # Increment ease factor slightly
+
+        # Setting review_counter to the current interval reflects how many other words will be reviewed before this one is encountered again. Review counter for all words will be decremented elsewhere *ADD LOCATION OF ELSEWHERE!!!
+        self.review_counter = self.interval
