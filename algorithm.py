@@ -58,3 +58,7 @@ class VocabCard:
 
         # Setting review_counter to the current interval reflects how many other words will be reviewed before this one is encountered again. Review counter for all words will be decremented elsewhere *ADD LOCATION OF ELSEWHERE!!!
         self.review_counter = self.interval
+    
+    def is_learned(self, max_repetitions = 5):
+        # Tells us if the current word is learned completely; the number of repetitions exceeds the stated max repetitions requirement.
+        return self.repetitions >= max_repetitions
