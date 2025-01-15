@@ -73,7 +73,7 @@ def show_word_status(vocab_cards):
         if card.review_counter <= 0 and card.is_new == False:
             due_words.append(card)
 
-    print(f"Total words due for review: {len(due_words)}")
+    # print(f"Total words due for review: {len(due_words)}")
     return due_words
 
 def review_session(vocab_cards, max_repetitions = 5):
@@ -98,21 +98,21 @@ def review_session(vocab_cards, max_repetitions = 5):
                 if card.is_new:
                     filler_word = card
                     break
-                if filler_word:
-                    filler_word.is_new = False # Mark as no longer new
-                    print(f'Introducing a new word: {filler_word.word}')
-                    history.append(filler_word.word)
-                    total_words_reviewed += 1
-                    continue
-                else:
-                    all_learned = True
-                    for card in vocab_cards.values():
-                        if not card.is_learned(max_repetitions):
-                            all_learned = False
-                            break
-                        if all_learned:
-                            print('Congrats! All words are learned!')
-                            break
+            if filler_word:
+                filler_word.is_new = False # Mark as no longer new
+                print(f'Introducing a new word: {filler_word.word}')
+                history.append(filler_word.word)
+                total_words_reviewed += 1
+                continue
+            else:
+                all_learned = True
+                for card in vocab_cards.values():
+                    if not card.is_learned(max_repetitions):
+                        all_learned = False
+                        break
+                if all_learned:
+                    print('Congrats! All words are learned!')
+                    break
 
         # Review the due words
         for card in due_words:
@@ -121,4 +121,14 @@ def review_session(vocab_cards, max_repetitions = 5):
             card.update_card()
             total_words_reviewed += 1
 
-    
+    # 1.5 Save this long list of all our words to a csv file, that can later be read by our game.
+    # Write out our history list to a csv file
+    output_file = 'words_history.csv'
+    write_list_to_csv(history, output_file)
+    print(len(history))
+
+
+if __name__ == '__main__':
+    vocab_cards = load_vocab_from_json('definitions.json')
+    print('Starting vocab learning session...')
+    review_session(vocab_cards)
