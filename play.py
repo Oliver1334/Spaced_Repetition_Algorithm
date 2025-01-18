@@ -12,3 +12,10 @@ def load_words_from_csv(file_path):
             if row:
                 words.append(row[0])
         return words
+
+def load_definitions_from_json(file_path):
+    #load definitions from json file
+    with open(file_path, 'r') as f:
+        definitions = json.load(f)
+    return definitions
+
