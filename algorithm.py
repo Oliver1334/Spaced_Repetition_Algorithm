@@ -56,7 +56,7 @@ class VocabCard:
         # Although ease_factor starts at 2.5, we have this max function here for future tuning development
         self.ease_factor = max(1.3, self.ease_factor + 0.1) # Increment ease factor slightly
 
-        # Setting review_counter to the current interval reflects how many other words will be reviewed before this one is encountered again. Review counter for all words will be decremented elsewhere *ADD LOCATION OF ELSEWHERE!!!
+        # Setting review_counter to the current interval reflects how many other words will be reviewed before this one is encountered again. Review counter for all words will be decremented in the review_session function.
         self.review_counter = self.interval
     
     def is_learned(self, max_repetitions = 5):
@@ -128,7 +128,8 @@ def review_session(vocab_cards, max_repetitions = 5):
     print(len(history))
 
 
-if __name__ == '__main__':
-    vocab_cards = load_vocab_from_json('definitions.json')
+if __name__ == '__main__':  #ensures that this block runs only when you execute this current file directly. Prevents review_session from running unintentionally when this file is imported elsewhere.
+    vocab_cards = load_vocab_from_json('definitions.json') #This sets up the vocabulary data, preparing it for the spaced repetition algorithm.
     print('Starting vocab learning session...')
     review_session(vocab_cards)
+    #Inside the review_session function the spaced repetition algorithm is applied. Words are reviewed and spaced appropriately. The resulting word order is saved to the CSV file words_history.csv. This is where the core functionality of the algorithm.py program is executed.
