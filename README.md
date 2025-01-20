@@ -5,23 +5,23 @@ This Spaced Repetition Vocabulary Game is a terminal-based educational tool desi
 
 ## Features
 
-* Spaced Repetition Algorithm: A spaced repetition list is created and written to a CSV file so that words can be reviewed at progressive intervals.
-* Word Definitions: Definitions are sourced from a JSON dictionary file.
-* Game Mode: Users are prompted to define words in order of the spaced repetition sequence, with instant feedback.
+  * Spaced Repetition Algorithm: A spaced repetition list is created and written to a CSV file so that words can be reviewed at progressive intervals.
+  * Word Definitions: Definitions are sourced from a JSON dictionary file.
+  * Game Mode: Users are prompted to define words in order of the spaced repetition sequence, with instant feedback.
 
 
 ## Setup Instructions
 
 0. Requirements
-- Python 3
+  - Python 3
 
 1. Clone down the project
 Use '''git clone''' to create a local copy of the project
 
 2. Ensure the following files are in the project folder:
-- algorithm.py: Generates the spaced repetition word list.
-- play.py: Runs the game in the terminal.
-- definitions.json: Contains word-definition pairs.
+  - algorithm.py: Generates the spaced repetition word list.
+  - play.py: Runs the game in the terminal.
+  - definitions.json: Contains word-definition pairs.
 
 3. Run the algorithm.py file to generate the spaced repetition word list.
 '''python3 algorithm.py'''
@@ -30,9 +30,9 @@ Use '''git clone''' to create a local copy of the project
 '''python3 play.py'''
 
 5. Gameplay:
-- Define words presented one at a time.
-- If it’s your first time encountering a word, its definition will be shown.
-- Type the correct definition to proceed to the next word.
-- The game ends if you answer incorrectly, and your score will be displayed.
-- Complete the entire vocabulary list to win the game!
+  - Define words presented one at a time.
+  - If it’s your first time encountering a word, its definition will be shown.
+  - Type the correct definition to proceed to the next word.
+  - The game ends if you answer incorrectly, and your score will be displayed.
+  - Complete the entire vocabulary list to win the game!
 
