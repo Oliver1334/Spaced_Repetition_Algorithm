@@ -61,3 +61,18 @@ def test_user(words, definitions):
     # We have finished looping through all words in the CSV file, the user has won the game and mastered all definitions.
     print('\nCongratulations! You have completed the game! (:)')
     print(f'\nHigh Score: {high_score}')
+
+if __name__ == "__main__": # Confirms we are running this file specifically
+    # File paths
+    csv_file_path = "words_history.csv"
+    json_file_path = "definitions.json"
+
+    # Load data
+    words = load_words_from_csv(csv_file_path)
+    definitions = load_definitions_from_json(json_file_path)
+
+    # Start the game
+    print("Welcome to the Word Definition Game!")
+    test_user(words, definitions)
+
+    
