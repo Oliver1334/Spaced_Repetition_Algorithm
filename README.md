@@ -16,20 +16,20 @@ This Spaced Repetition Vocabulary Game is a terminal-based educational tool desi
   - Python 3
 
 1. Clone down the project
-Use '''git clone''' to create a local copy of the project
+Use ```git clone``` to create a local copy of the project
 
 2. Ensure the following files are in the project folder:
-  - algorithm.py: Generates the spaced repetition word list.
+  &ensp;- algorithm.py: Generates the spaced repetition word list.
   - play.py: Runs the game in the terminal.
   - definitions.json: Contains word-definition pairs.
 
-3. Run the algorithm.py file to generate the spaced repetition word list.
-'''python3 algorithm.py'''
+3. Run the algorithm.py file to generate the spaced repetition word list
+   ```python3 algorithm.py```
 
-4. Run the play.py file to start the vocabulary game
-'''python3 play.py'''
+5. Run the play.py file to start the vocabulary game
+   ```python3 play.py```
 
-5. Gameplay:
+6. Gameplay:
   - Define words presented one at a time.
   - If it’s your first time encountering a word, its definition will be shown.
   - Type the correct definition to proceed to the next word.
