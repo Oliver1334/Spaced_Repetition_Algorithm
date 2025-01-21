@@ -19,7 +19,7 @@ This Spaced Repetition Vocabulary Game is a terminal-based educational tool desi
 Use ```git clone``` to create a local copy of the project
 
 2. Ensure the following files are in the project folder:
-  &ensp;- algorithm.py: Generates the spaced repetition word list.
+  - algorithm.py: Generates the spaced repetition word list.
   - play.py: Runs the game in the terminal.
   - definitions.json: Contains word-definition pairs.
 
